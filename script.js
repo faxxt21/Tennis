@@ -8,41 +8,6 @@ const STATE = {
 let gameState = STATE.MENU;
 let frameCount = 0;
 
-function resizeGame() {
-    const baseWidth = 800;
-    const baseHeight = 600;
-    
-    let windowWidth = window.innerWidth;
-    let windowHeight = window.innerHeight;
-    
-    let scale = Math.min(windowWidth / baseWidth, windowHeight / baseHeight);
-    
-    canvas.width = baseWidth;
-    canvas.height = baseHeight;
-    
-    const finalWidth = Math.floor(baseWidth * scale);
-    const finalHeight = Math.floor(baseHeight * scale);
-    
-    canvas.style.width = finalWidth + "px";
-    canvas.style.height = finalHeight + "px";
-    
-    const scan = document.getElementById("scan");
-    if (scan) {
-        scan.style.width = finalWidth + "px";
-        scan.style.height = finalHeight + "px";
-    }
-    
-    ctx.imageSmoothingEnabled = false;
-    ctx.mozImageSmoothingEnabled = false;
-    ctx.webkitImageSmoothingEnabled = false;
-    ctx.msImageSmoothingEnabled = false;
-    
-    draw();
-}
-
-window.addEventListener("resize", resizeGame);
-window.addEventListener("load", resizeGame);
-resizeGame();
 
 const paddleWidth = 80;
 const paddleHeight = 12;
