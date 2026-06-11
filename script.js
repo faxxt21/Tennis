@@ -365,6 +365,13 @@ function draw() {
         ctx.fillStyle = COLOR.ball;
         ctx.fillRect(ball.x - ball.r + 1.5, ball.y - ball.r + 1.5, (ball.r * 2) - 3, (ball.r * 2) - 3);
     }
+ctx.save();
+ctx.globalAlpha = 0.08;
+for (let y = 0; y < canvas.height; y += 4) {
+    ctx.fillStyle = "#000";
+    ctx.fillRect(0, y + 2, canvas.width, 1);
+}
+ctx.restore();
 }
 
 function gameLoop() {
