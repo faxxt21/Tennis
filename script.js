@@ -4,6 +4,9 @@ var ctx = canvas.getContext("2d");
 let igraStatus = "menu";
 let frames = 0;
 
+canvas.width = 800;
+canvas.height = 600;
+
 function resizeGame() {
     let w_base = 800;
     let h_base = 600;
@@ -12,13 +15,9 @@ function resizeGame() {
     let h_win = window.innerHeight;
     
     let koef = Math.min(w_win / w_base, h_win / h_base);
-    let r = window.devicePixelRatio || 1;
     
     let f_width = Math.floor((w_base * koef) / 2) * 2;
     let f_height = Math.floor((h_base * koef) / 2) * 2;
-    
-    canvas.width = w_base * r;
-    canvas.height = h_base * r;
     
     canvas.style.width = f_width + "px";
     canvas.style.height = f_height + "px";
@@ -28,8 +27,6 @@ function resizeGame() {
         scanLine.style.width = f_width + "px";
         scanLine.style.height = f_height + "px";
     }
-    
-    ctx.scale(r, r);
     
     ctx.imageSmoothingEnabled = false;
     ctx.mozImageSmoothingEnabled = false;
@@ -41,7 +38,6 @@ function resizeGame() {
 
 window.addEventListener("resize", resizeGame);
 window.addEventListener("load", resizeGame);
-resizeGame();
 
 let padW = 80;
 let padH = 12;
