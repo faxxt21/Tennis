@@ -20,16 +20,24 @@ function resizeGame() {
     canvas.width = baseWidth;
     canvas.height = baseHeight;
     
-    canvas.style.width = (baseWidth * scale) + "px";
-    canvas.style.height = (baseHeight * scale) + "px";
+    const finalWidth = Math.floor(baseWidth * scale);
+    const finalHeight = Math.floor(baseHeight * scale);
+    
+    canvas.style.width = finalWidth + "px";
+    canvas.style.height = finalHeight + "px";
     
     const scan = document.getElementById("scan");
     if (scan) {
-        scan.style.width = (baseWidth * scale) + "px";
-        scan.style.height = (baseHeight * scale) + "px";
+        scan.style.width = finalWidth + "px";
+        scan.style.height = finalHeight + "px";
     }
     
     ctx.imageSmoothingEnabled = false;
+    ctx.mozImageSmoothingEnabled = false;
+    ctx.webkitImageSmoothingEnabled = false;
+    ctx.msImageSmoothingEnabled = false;
+    
+    draw();
 }
 
 window.addEventListener("resize", resizeGame);
